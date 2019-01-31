@@ -145,6 +145,19 @@ namespace lol_region_copier.Core
 				Console.ReadKey();
 				return;
 			}
+			IDictionary<object, object> originRegionData = originRegionList[originRegion] as IDictionary<object, object>;
+			IDictionary<object, object> targetRegionData = targetRegionList[targetRegion] as IDictionary<object, object>;
+			foreach (KeyValuePair<object, object> pair in originRegionData)
+			{
+				string key = pair.Key as string;
+				if (key.Equals("available_locales") || key.Equals("default_locale"))
+				{
+					continue;
+				}
+				targetRegionData[key] = originRegionData[key];
+			}
+			serializer.Serialize(File.Create(targetFile), targetSettings);
+			Console.WriteLine("Region copied.");
 			Console.ReadKey();
 		}
 	}
