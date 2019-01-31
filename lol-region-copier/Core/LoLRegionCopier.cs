@@ -108,26 +108,40 @@ namespace lol_region_copier.Core
 				Console.ReadKey();
 				return;
 			}
-			string originRegion = origin.GetValue("region").Value<string>();
-			string targetRegion = target.GetValue("region").Value<string>();
-			if (targetRegion.Equals(originRegion, StringComparison.CurrentCultureIgnoreCase))
+			string originRegion = origin.GetValue("region").Value<string>().ToUpper();
+			string targetRegion = target.GetValue("region").Value<string>().ToUpper();
+			if (targetRegion.Equals(originRegion))
 			{
 				Console.WriteLine("Target region can not be the same as the origin region.");
 				Console.ReadKey();
 				return;
 			}
 			Serializer serializer = new Serializer();
-			Dictionary<object, object> originSettings = serializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(originFile));
+			IDictionary<object, object> originSettings = serializer.Deserialize<IDictionary<object, object>>(File.ReadAllText(originFile));
 			if (!originSettings.ContainsKey("region_data"))
 			{
 				Console.WriteLine("Origin file does not contain 'region_data' key.");
 				Console.ReadKey();
 				return;
 			}
-			Dictionary<object, object> targetSettings = serializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(targetFile));
+			IDictionary<object, object> originRegionList = originSettings["region_data"] as IDictionary<object, object>;
+			if (!originRegionList.ContainsKey(originRegion))
+			{
+				Console.WriteLine("Origin file does not contain '" + originRegion + "' region data.");
+				Console.ReadKey();
+				return;
+			}
+			IDictionary<object, object> targetSettings = serializer.Deserialize<IDictionary<object, object>>(File.ReadAllText(targetFile));
 			if (!targetSettings.ContainsKey("region_data"))
 			{
 				Console.WriteLine("Target file does not contain 'region_data' key.");
+				Console.ReadKey();
+				return;
+			}
+			IDictionary<object, object> targetRegionList = targetSettings["region_data"] as IDictionary<object, object>;
+			if (!targetRegionList.ContainsKey(targetRegion))
+			{
+				Console.WriteLine("Target file does not contain '" + targetRegion + "' region data.");
 				Console.ReadKey();
 				return;
 			}
