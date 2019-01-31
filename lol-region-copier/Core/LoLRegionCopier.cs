@@ -87,7 +87,24 @@ namespace lol_region_copier.Core
 				Console.ReadKey();
 				return;
 			}
-			string originFile = Path.Combine(originLocation, "system.yaml");
+			int originVersionNumber = -1;
+			string originVersionLocation = "";
+			foreach (string file in Directory.GetFileSystemEntries(originLocation))
+			{
+				string fileName = Path.GetFileName(file);
+				string[] fileNameData = fileName.Split('.');
+				if (fileNameData.Length != 4)
+				{
+					continue;
+				}
+				int version = int.Parse(fileNameData.GetValue(3) as string);
+				if (version > originVersionNumber)
+				{
+					originVersionNumber = version;
+					originVersionLocation = file;
+				}
+			}
+			string originFile = Path.Combine(originVersionLocation, "deploy", "system.yaml");
 			if (!File.Exists(originFile))
 			{
 				Console.WriteLine("'" + originFile + "' file does not exist.");
@@ -101,8 +118,25 @@ namespace lol_region_copier.Core
 				Console.ReadKey();
 				return;
 			}
-			string targetFile = Path.Combine(targetLocation, "system.yaml");
-			if (!File.Exists(originFile))
+			int targetVersionNumber = -1;
+			string targetVersionLocation = "";
+			foreach (string file in Directory.GetFileSystemEntries(targetLocation))
+			{
+				string fileName = Path.GetFileName(file);
+				string[] fileNameData = fileName.Split('.');
+				if (fileNameData.Length != 4)
+				{
+					continue;
+				}
+				int version = int.Parse(fileNameData.GetValue(3) as string);
+				if (version > targetVersionNumber)
+				{
+					targetVersionNumber = version;
+					targetVersionLocation = file;
+				}
+			}
+			string targetFile = Path.Combine(targetVersionLocation, "deploy", "system.yaml");
+			if (!File.Exists(targetFile))
 			{
 				Console.WriteLine("'" + targetFile + "' file does not exist.");
 				Console.ReadKey();
