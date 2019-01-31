@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lol-region-copier", "lol-region-copier\lol-region-copier.csproj", "{074263C7-01FF-4E61-84F3-C10240724C5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{074263C7-01FF-4E61-84F3-C10240724C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074263C7-01FF-4E61-84F3-C10240724C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074263C7-01FF-4E61-84F3-C10240724C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074263C7-01FF-4E61-84F3-C10240724C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {092CDDEF-087E-4779-8057-EB2E992D403B}
+	EndGlobalSection
+EndGlobal
