@@ -23,6 +23,7 @@
 using System;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace lol_region_copier.Core
 {
@@ -32,17 +33,29 @@ namespace lol_region_copier.Core
 
 		public void Start()
 		{
-			Console.WriteLine("Preparing region copier...");
-			Console.WriteLine("Finding settings file...");
+			Console.WriteLine("Copying region...");
 			if (!File.Exists(SettingsFile))
 			{
 				Console.WriteLine("Could not find settings file.");
 				Console.ReadKey();
 				return;
 			}
-			Console.WriteLine("Settings file found.");
-			Json json = JsonConvert.DeserializeObject(File.ReadAllText(SettingsFile)) as JsonObjectAttribute;
-			Console.WriteLine(json);
+			JObject json = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(SettingsFile));
+			if (!json.ContainsKey("origin"))
+			{
+				Console.WriteLine("Could not find 'origin' property.");
+				Console.ReadKey();
+				return;
+			}
+			if (!json.ContainsKey("target"))
+			{
+				Console.WriteLine("Could not find 'target' property.");
+				Console.ReadKey();
+				return;
+			}
+			string origin = json.GetValue("origin").Value<string>();
+			string target = json.GetValue("target").Value<string>();
+			Console.WriteLine("Region copied.");
 			Console.ReadKey();
 		}
 	}
