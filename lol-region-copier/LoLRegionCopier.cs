@@ -171,10 +171,6 @@ namespace lol_region_copier
 				return;
 			}
 			IDictionary<object, object> targetSettings = serializer.Deserialize<IDictionary<object, object>>(File.ReadAllText(targetFile));
-			foreach (object key in targetSettings.Keys)
-			{
-				Console.WriteLine(key);
-			}
 			if (!targetSettings.ContainsKey("region_data"))
 			{
 				Console.WriteLine("Target file does not contain 'region_data' key.");
