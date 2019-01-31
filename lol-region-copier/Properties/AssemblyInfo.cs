@@ -6,5 +6,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("lol-region-copier")]
 [assembly: AssemblyCopyright("Copyright © Jakub Zagórski (jaqobb)")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
