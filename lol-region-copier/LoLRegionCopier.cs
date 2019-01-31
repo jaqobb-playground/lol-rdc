@@ -21,19 +21,24 @@
 // SOFTWARE.
 
 using System;
+using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SharpYaml.Serialization;
 
-namespace lol_region_copier.Core
+namespace lol_region_copier
 {
-	public class LoLRegionCopier
+	public partial class LoLRegionCopier
 	{
-		public static readonly string SettingsFile = Path.Combine("settings.json");
+		private static readonly string SettingsFile = Path.Combine("settings.json");
 
-		public void Start()
+		private LoLRegionCopier()
+		{
+		}
+
+		private static void Main(string[] arguments)
 		{
 			if (!File.Exists(SettingsFile))
 			{
@@ -166,6 +171,10 @@ namespace lol_region_copier.Core
 				return;
 			}
 			IDictionary<object, object> targetSettings = serializer.Deserialize<IDictionary<object, object>>(File.ReadAllText(targetFile));
+			foreach (object key in targetSettings.Keys)
+			{
+				Console.WriteLine(key);
+			}
 			if (!targetSettings.ContainsKey("region_data"))
 			{
 				Console.WriteLine("Target file does not contain 'region_data' key.");
@@ -190,8 +199,6 @@ namespace lol_region_copier.Core
 				targetRegionData[key] = originRegionData[key];
 			}
 			serializer.Serialize(File.Create(targetFile), targetSettings);
-			Console.WriteLine("Region copied.");
-			Console.ReadKey();
 		}
 	}
 }
