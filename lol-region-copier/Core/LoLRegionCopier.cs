@@ -33,29 +33,39 @@ namespace lol_region_copier.Core
 
 		public void Start()
 		{
-			Console.WriteLine("Copying region...");
 			if (!File.Exists(SettingsFile))
 			{
 				Console.WriteLine("Could not find settings file.");
 				Console.ReadKey();
 				return;
 			}
-			JObject json = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(SettingsFile));
-			if (!json.ContainsKey("origin"))
+			JObject settings = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(SettingsFile));
+			if (!settings.ContainsKey("origin"))
 			{
 				Console.WriteLine("Could not find 'origin' property.");
 				Console.ReadKey();
 				return;
 			}
-			if (!json.ContainsKey("target"))
+			if (!settings.ContainsKey("target"))
 			{
 				Console.WriteLine("Could not find 'target' property.");
 				Console.ReadKey();
 				return;
 			}
-			string origin = json.GetValue("origin").Value<string>();
-			string target = json.GetValue("target").Value<string>();
-			Console.WriteLine("Region copied.");
+			string origin = settings.GetValue("origin").Value<string>();
+			string target = settings.GetValue("target").Value<string>();
+			if (!Directory.Exists(origin))
+			{
+				Console.WriteLine("'" + origin + "' is not a directory.");
+				Console.ReadKey();
+				return;
+			}
+			if (!Directory.Exists(target))
+			{
+				Console.WriteLine("'" + target + "' is not a directory.");
+				Console.ReadKey();
+				return;
+			}
 			Console.ReadKey();
 		}
 	}
