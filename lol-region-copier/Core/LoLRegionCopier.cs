@@ -52,17 +52,51 @@ namespace lol_region_copier.Core
 				Console.ReadKey();
 				return;
 			}
-			string origin = settings.GetValue("origin").Value<string>();
-			string target = settings.GetValue("target").Value<string>();
-			if (!Directory.Exists(origin))
+			JObject origin = settings.GetValue("origin").Value<JObject>();
+			if (!origin.ContainsKey("location"))
 			{
-				Console.WriteLine("'" + origin + "' is not a directory.");
+				Console.WriteLine("Could not find 'location' property inside 'origin' property.");
 				Console.ReadKey();
 				return;
 			}
-			if (!Directory.Exists(target))
+			if (!origin.ContainsKey("region"))
 			{
-				Console.WriteLine("'" + target + "' is not a directory.");
+				Console.WriteLine("Could not find 'region' property inside 'origin' property.");
+				Console.ReadKey();
+				return;
+			}
+			JObject target = settings.GetValue("target").Value<JObject>();
+			if (!target.ContainsKey("location"))
+			{
+				Console.WriteLine("Could not find 'location' property inside 'target' property.");
+				Console.ReadKey();
+				return;
+			}
+			if (!target.ContainsKey("region"))
+			{
+				Console.WriteLine("Could not find 'region' property inside 'target' property.");
+				Console.ReadKey();
+				return;
+			}
+			string originLocation = origin.GetValue("location").Value<string>();
+			if (!Directory.Exists(originLocation))
+			{
+				Console.WriteLine("'" + originLocation + "' is not a directory.");
+				Console.ReadKey();
+				return;
+			}
+			string targetLocation = target.GetValue("location").Value<string>();
+			if (!Directory.Exists(targetLocation))
+			{
+				Console.WriteLine("'" + targetLocation + "' is not a directory.");
+				Console.ReadKey();
+				return;
+			}
+			string originRegion = origin.GetValue("region").Value<string>();
+			string targetRegion = target.GetValue("region").Value<string>();
+			if (targetRegion.Equals(originRegion, StringComparison.CurrentCultureIgnoreCase))
+			{
+				Console.WriteLine("Target region can not be the same as the origin region.");
 				Console.ReadKey();
 				return;
 			}
