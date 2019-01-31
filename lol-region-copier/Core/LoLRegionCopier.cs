@@ -24,6 +24,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SharpYaml.Serialization;
 
 namespace lol_region_copier.Core
 {
@@ -81,14 +82,28 @@ namespace lol_region_copier.Core
 			string originLocation = origin.GetValue("location").Value<string>();
 			if (!Directory.Exists(originLocation))
 			{
-				Console.WriteLine("'" + originLocation + "' is not a directory.");
+				Console.WriteLine("'" + originLocation + "' directory does not exist.");
+				Console.ReadKey();
+				return;
+			}
+			string originFile = Path.Combine(originLocation, "system.yaml");
+			if (!File.Exists(originFile))
+			{
+				Console.WriteLine("'" + originFile + "' file does not exist.");
 				Console.ReadKey();
 				return;
 			}
 			string targetLocation = target.GetValue("location").Value<string>();
 			if (!Directory.Exists(targetLocation))
 			{
-				Console.WriteLine("'" + targetLocation + "' is not a directory.");
+				Console.WriteLine("'" + targetLocation + "' directory does not exist.");
+				Console.ReadKey();
+				return;
+			}
+			string targetFile = Path.Combine(targetLocation, "system.yaml");
+			if (!File.Exists(originFile))
+			{
+				Console.WriteLine("'" + targetFile + "' file does not exist.");
 				Console.ReadKey();
 				return;
 			}
@@ -100,6 +115,7 @@ namespace lol_region_copier.Core
 				Console.ReadKey();
 				return;
 			}
+			Serializer serializer = new Serializer();
 			Console.ReadKey();
 		}
 	}
