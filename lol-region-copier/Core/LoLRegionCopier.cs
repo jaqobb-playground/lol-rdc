@@ -147,9 +147,8 @@ namespace lol_region_copier.Core
 			}
 			IDictionary<object, object> originRegionData = originRegionList[originRegion] as IDictionary<object, object>;
 			IDictionary<object, object> targetRegionData = targetRegionList[targetRegion] as IDictionary<object, object>;
-			foreach (KeyValuePair<object, object> pair in originRegionData)
+			foreach (object key in originRegionData.Keys)
 			{
-				string key = pair.Key as string;
 				if (key.Equals("available_locales") || key.Equals("default_locale"))
 				{
 					continue;
