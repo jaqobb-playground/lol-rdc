@@ -22,6 +22,7 @@
 
 using System;
 using System.IO;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SharpYaml.Serialization;
@@ -116,6 +117,20 @@ namespace lol_region_copier.Core
 				return;
 			}
 			Serializer serializer = new Serializer();
+			Dictionary<object, object> originSettings = serializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(originFile));
+			if (!originSettings.ContainsKey("region_data"))
+			{
+				Console.WriteLine("Origin file does not contain 'region_data' key.");
+				Console.ReadKey();
+				return;
+			}
+			Dictionary<object, object> targetSettings = serializer.Deserialize<Dictionary<object, object>>(File.ReadAllText(targetFile));
+			if (!targetSettings.ContainsKey("region_data"))
+			{
+				Console.WriteLine("Target file does not contain 'region_data' key.");
+				Console.ReadKey();
+				return;
+			}
 			Console.ReadKey();
 		}
 	}
