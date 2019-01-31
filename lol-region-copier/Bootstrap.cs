@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace lol_region_copier
 {
-	class Program
+	class Bootstrap
 	{
-		static void Main(string[] args)
+		static void Main(string[] arguments)
 		{
 		}
 	}
