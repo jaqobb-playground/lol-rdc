@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{074263C7-01FF-4E61-84F3-C10240724C5B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lol_region_copier</RootNamespace>
+    <RootNamespace>LoLRegionCopier</RootNamespace>
     <AssemblyName>lol-region-copier</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

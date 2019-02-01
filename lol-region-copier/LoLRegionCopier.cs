@@ -27,7 +27,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SharpYaml.Serialization;
 
-namespace lol_region_copier
+namespace LoLRegionCopier
 {
 	public partial class LoLRegionCopier
 	{

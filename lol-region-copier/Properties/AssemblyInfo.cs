@@ -23,9 +23,9 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("lol-region-copier")]
+[assembly: AssemblyTitle("League of Legends Region Copier")]
 [assembly: AssemblyDescription("League of Legends region copier")]
-[assembly: AssemblyProduct("lol-region-copier")]
+[assembly: AssemblyProduct("League of Legends Region Copier")]
 [assembly: AssemblyCopyright("Copyright © Jakub Zagórski (jaqobb)")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyVersion("1.0.0")]
