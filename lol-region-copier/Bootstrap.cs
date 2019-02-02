@@ -29,7 +29,7 @@ using SharpYaml.Serialization;
 
 namespace LoLRegionCopier
 {
-	public partial class Bootstrap
+	public class Bootstrap
 	{
 		private static readonly string SettingsFile = Path.Combine("settings.json");
 
@@ -37,7 +37,7 @@ namespace LoLRegionCopier
 		{
 		}
 
-		private static void Main(string[] arguments)
+		public static void Main(string[] arguments)
 		{
 			if (!File.Exists(SettingsFile))
 			{
