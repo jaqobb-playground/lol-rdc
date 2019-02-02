@@ -29,11 +29,11 @@ using SharpYaml.Serialization;
 
 namespace LoLRegionCopier
 {
-	public partial class LoLRegionCopier
+	public partial class Bootstrap
 	{
 		private static readonly string SettingsFile = Path.Combine("settings.json");
 
-		private LoLRegionCopier()
+		private Bootstrap()
 		{
 		}
 
