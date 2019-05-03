@@ -1,4 +1,4 @@
-﻿// This file is a part of lol-region-copier, licensed under the MIT License.
+﻿// MIT License
 //
 // Copyright (c) Jakub Zagórski (jaqobb)
 //
