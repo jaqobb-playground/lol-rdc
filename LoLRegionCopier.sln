@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lol-region-copier", "lol-region-copier\lol-region-copier.csproj", "{074263C7-01FF-4E61-84F3-C10240724C5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLRegionCopier", "LoLRegionCopier\LoLRegionCopier.csproj", "{074263C7-01FF-4E61-84F3-C10240724C5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
