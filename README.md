@@ -1,5 +1,4 @@
-LoLRegionCopier
-=========
+# LoLRegionCopier
 
 League of Legends region data copier.
 
