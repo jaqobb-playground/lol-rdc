@@ -1,5 +1,5 @@
-# LoLRegionCopier
+# lol-rdc
 
-League of Legends region data copier.
+Region data copier League of Legends.
 
-Project is not likely to receive any more changes. Project itself was supposed to make i.e. playing on Korean language but EU servers easier but this solution no longer works and recent game updates made this easier to do without having to copy anything.
+The project has been archived due to changes in League of Legends, which have rendered it redundant. League of Legends now enables in-game language changes without the need to modify game files or launcher arguments.
