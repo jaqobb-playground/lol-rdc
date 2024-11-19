@@ -1,4 +1,4 @@
-# lol-rdc
+# LoL RDC
 
 Region data copier for League of Legends.
 
